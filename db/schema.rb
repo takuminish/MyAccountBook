@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_124517) do
+ActiveRecord::Schema.define(version: 2019_06_23_131702) do
+
+  create_table "date_purchases", force: :cascade do |t|
+    t.integer "total_cost", null: false
+    t.datetime "date", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_date_purchases_on_product_id"
+  end
 
   create_table "product_categories", force: :cascade do |t|
     t.string "name", null: false

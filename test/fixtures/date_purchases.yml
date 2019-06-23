@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  total_cost: 1
+  date: 2019-06-23 22:17:02
+  product: one
+
+two:
+  total_cost: 1
+  date: 2019-06-23 22:17:02
+  product: two
