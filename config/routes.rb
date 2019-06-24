@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   get 'date_purchases/edit'
   get 'product_categories/new'
   get 'stores/new'
+
+  resources :product_categories
+  resources :stores
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
