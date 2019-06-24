@@ -2,7 +2,7 @@
 <%= form_for (@product_category) do |f| %>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-    <%= f.radio_button :expense, true %>
+    <label><%= f.radio_button :expense, true %>支出</label>
     <%= f.submit %>
 <% end %>
 
