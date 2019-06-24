@@ -14,7 +14,7 @@ class ProductCategoriesController < ApplicationController
 
   private def product_category_params
 
-    params.require(:product_category).permit(:name)
+    params.require(:product_category).permit(:name, :expense)
 
   end
 end
