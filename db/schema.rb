@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_131702) do
+ActiveRecord::Schema.define(version: 2019_06_24_120229) do
 
   create_table "date_purchases", force: :cascade do |t|
     t.integer "total_cost", null: false
