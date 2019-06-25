@@ -1,6 +1,6 @@
 class DatePurchase < ApplicationRecord
-  has_many :product
-  accepts_nested_attributes_for :product
+  has_many :products
+  accepts_nested_attributes_for :products
 
   validates :total_cost, presence: true
   validates :date, presence: true

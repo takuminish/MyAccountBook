@@ -2,13 +2,19 @@
 
 <%= form_for(@date_purchase) do |f| %>
     <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+    <%= f.date_field :date %><br>
+    <%= f.label :total_cost %><br>
+    <%= f.number_field :total_cost %><br>
     <% 2.times do %>
         <%= f.fields_for :products do |product| %>
             <%= product.label :name %>
             <%= product.text_field :name %>
+            <%= product.label :price %>
             <%= product.number_field :price %>
-            <%= product.datetime_select :purchase_date %>
+            <%= product.date_field :purchase_date %>
+            <%= product.collection_select :store_id, Store.all, :id, :name %>
+            <%= product.collection_select :product_category_id, ProductCategory.all, :id, :name %>
+            <br>
         <% end %>
     <% end %>
     <%= f.submit %>
