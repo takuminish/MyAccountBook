@@ -12,7 +12,12 @@ class DatePurchasesController < ApplicationController
 
   def create
     @date_purchase = DatePurchase.new(date_purchase_params)
-    @date_purchase.save
+    if @date_purchase.save
+
+    else
+      puts @date_purchase.errors.full_messages
+    end
+ 
   end
   def edit
   end
@@ -20,6 +25,6 @@ class DatePurchasesController < ApplicationController
 
   private def date_purchase_params
   
-  params.require(:date_purchase).permit(:totalcost, :date, products_attributes:[:name, :price, :purchase_date, :store_id, :product_category_id])
+  params.require(:date_purchase).permit(:total_cost, :date, products_attributes:[:name, :price, :purchase_date, :store_id, :product_category_id])
   end
 end
