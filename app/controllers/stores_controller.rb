@@ -18,6 +18,12 @@ class StoresController < ApplicationController
 
   end
 
+  def edit
+
+    @store = Store.find(param[:id])
+  
+  end
+
   private def store_params
 
     params.require(:store).permit(:name)
