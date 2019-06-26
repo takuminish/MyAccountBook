@@ -20,8 +20,13 @@ class StoresController < ApplicationController
 
   def edit
 
-    @store = Store.find(param[:id])
+    @store = Store.find(params[:id])
   
+  end
+
+  def update
+    @store = Store.find(params[:id])
+    @store.update(store_params)
   end
 
   private def store_params
