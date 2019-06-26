@@ -4,4 +4,13 @@ class DatePurchase < ApplicationRecord
 
   validates :total_cost, presence: true
   validates :date, presence: true
+
+  def total_cost_insert
+    total_cost = 0;
+    
+    self.products.each do |p|
+      total_cost += p.price
+    end
+    self.total_cost = total_cost
+  end
 end
