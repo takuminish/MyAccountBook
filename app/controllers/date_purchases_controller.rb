@@ -25,6 +25,6 @@ class DatePurchasesController < ApplicationController
 
   private def date_purchase_params
   
-  params.require(:date_purchase).permit(:total_cost, :date, products_attributes:[:name, :price, :purchase_date, :store_id, :product_category_id])
+  params.require(:date_purchase).permit(:date, products_attributes:[:name, :price, :store_id, :product_category_id])
   end
 end
