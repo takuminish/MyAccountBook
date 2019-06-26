@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # nested_form_fields
 gem 'nested_form_fields'
+
+#jQuery
+gem 'jquery-rails'
