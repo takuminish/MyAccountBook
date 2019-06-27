@@ -1,2 +1,16 @@
 <h1>DatePurchases#edit</h1>
-<p>Find me in app/views/date_purchases/edit.html.erb</p>
+
+<%= form_for(@date_purchase) do |f| %>
+    <%= f.label :date %><br>
+    <%= f.date_field :date %><br
+    <%= f.fields_for :products do |product| %>
+        <%= product.label :name %>
+        <%= product.text_field :name %>
+        <%= product.label :price %>
+        <%= product.number_field :price %>
+        <%= product.collection_select :store_id, Store.all, :id, :name %>
+        <%= product.collection_select :product_category_id, ProductCategory.all, :id, :name %>
+        <br>
+    <% end %>
+    <%= f.submit %>
+<% end %>
