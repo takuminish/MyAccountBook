@@ -3,15 +3,15 @@
 <%= form_for(@date_purchase) do |f| %>
     <%= f.label :date %><br>
     <%= f.date_field :date %><br
-    <%= f.fields_for :products do |product| %>
+    <%= f.nested_fields_for :products do |product| %>
         <%= product.label :name %>
         <%= product.text_field :name %>
         <%= product.label :price %>
         <%= product.number_field :price %>
         <%= product.collection_select :store_id, Store.all, :id, :name %>
         <%= product.collection_select :product_category_id, ProductCategory.all, :id, :name %>
-        <%= link_to "削除", product_path(product.object), method: :DELETE, data: {confirm: "削除してもいいですか?"} %>
         <br>
     <% end %>
     <%= f.submit %>
+    <%= f.add_nested_fields_link :products, "Add Form", role: "button" %>
 <% end %>
