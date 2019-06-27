@@ -28,8 +28,9 @@ class DatePurchasesController < ApplicationController
 
   def update
     @date_purchase = DatePurchase.find(params[:id])
-    @date_purchase.update(date_purchase_params_edit)
+    @date_purchase.update(date_purchase_params)
     @date_purchase.total_cost_insert
+    @date_purchase.products_purchase_date_insert
     if @date_purchase.save
 
     else
@@ -45,7 +46,4 @@ class DatePurchasesController < ApplicationController
   params.require(:date_purchase).permit(:date, products_attributes:[:name, :price, :store_id, :product_category_id])
   end
 
-  private def date_purchase_params_edit
-    params.require(:date_purchase).permit(:date)
-  end
 end
