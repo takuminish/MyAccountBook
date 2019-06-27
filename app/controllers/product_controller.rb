@@ -1,6 +1,6 @@
 class ProductController < ApplicationController
 
-    def destory
+    def destroy
         @product = Product.find(params[:id])
         @product.destory
     end
