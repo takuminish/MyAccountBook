@@ -22,12 +22,13 @@ class DatePurchasesController < ApplicationController
  
   end
   def edit
-
-
-
+    @date_purchase = DatePurchase.find(params[:id])
+    
   end
 
   def update
+    @date_purchase = DatePurchase.find(params[:id])
+
 
   end
 
