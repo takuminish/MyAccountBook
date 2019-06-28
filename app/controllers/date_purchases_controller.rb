@@ -7,7 +7,8 @@ class DatePurchasesController < ApplicationController
 
   def new
     @date_purchase = DatePurchase.new
-    @date_purchase.products.build
+    store_purchase = @date_purchase.store_purchases.build
+    store_purchase.products.build
   end
 
   def create
