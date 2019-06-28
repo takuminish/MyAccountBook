@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_123424) do
+ActiveRecord::Schema.define(version: 2019_06_28_123716) do
 
   create_table "date_purchases", force: :cascade do |t|
     t.integer "total_cost", null: false
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2019_06_28_123424) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "price"
-    t.integer "store_id"
     t.integer "product_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
