@@ -1,4 +1,4 @@
-class StorePurchaseControllerController < ApplicationController
+class StorePurchaseController < ApplicationController
 
     def destroy
         @store_purchase = StorePurchase.find(params[:id])

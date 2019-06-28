@@ -13,7 +13,8 @@ class DatePurchasesController < ApplicationController
 
   def create
     @date_purchase = DatePurchase.new(date_purchase_params)
-    @date_purchase.total_cost = 100
+    puts @date_purchase.store_purchases
+    @date_purchase.total_cost_insert
     if @date_purchase.save
 
     else
@@ -29,7 +30,7 @@ class DatePurchasesController < ApplicationController
   def update
     @date_purchase = DatePurchase.find(params[:id])
     @date_purchase.update(date_purchase_params_update)
-    @date_purchase.total_cost_insert
+    puts @date_purchase.store_purchase.build
     if @date_purchase.save
       redirect_back(fallback_location: stores_path)
 
