@@ -8,8 +8,11 @@ class DatePurchase < ApplicationRecord
   def total_cost_insert
     total_cost = 0;
     store_purchases = self.store_purchases
-    store_purchases.products.each do |p|
-      total_cost += p.price
+    store_purchases.each do |s|
+      s.products.each do |p|
+          total_cost += p.price
+      end
+      
     end
     self.total_cost = total_cost
   end
