@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_123824) do
+ActiveRecord::Schema.define(version: 2019_06_28_123953) do
 
   create_table "date_purchases", force: :cascade do |t|
     t.integer "total_cost", null: false
@@ -32,7 +32,9 @@ ActiveRecord::Schema.define(version: 2019_06_28_123824) do
     t.integer "product_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "store_purchases_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
+    t.index ["store_purchases_id"], name: "index_products_on_store_purchases_id"
   end
 
   create_table "store_purchases", force: :cascade do |t|
