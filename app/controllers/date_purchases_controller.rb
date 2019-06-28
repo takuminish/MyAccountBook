@@ -31,7 +31,6 @@ class DatePurchasesController < ApplicationController
     @date_purchase = DatePurchase.find(params[:id])
     @date_purchase.update(date_purchase_params_update)
     @date_purchase.total_cost_insert
-    @date_purchase.products_purchase_date_insert
     if @date_purchase.save
       redirect_back(fallback_location: stores_path)
 
