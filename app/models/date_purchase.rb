@@ -13,10 +13,4 @@ class DatePurchase < ApplicationRecord
     end
     self.total_cost = total_cost
   end
-
-  def products_purchase_date_insert
-    self.products.each do |p|
-      p.purchase_date = self.date
-    end
-  end
 end
