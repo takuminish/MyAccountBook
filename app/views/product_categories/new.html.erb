@@ -2,7 +2,7 @@
 <%= form_for (@product_category) do |f| %>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-    <label><%= f.elect :expense, [["収入", false],["支出",true]] %>収入or支出</label>
+    <label><%= f.select :expense, [["収入", false],["支出",true]] %>収入or支出</label>
     <%= f.submit %>
 <% end %>
 
