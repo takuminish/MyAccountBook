@@ -3,18 +3,20 @@
 <%= form_for(@date_purchase) do |f| %>
     <%= f.label :date %><br>
     <%= f.date_field :date %><br>
-    <%= f.nested_fields_for :store_purchases do |store_purchase| %>
-        <%= store_purchase.collection_select :store_id, Store.all, :id, :name %>
-        <%= f.nested_fields_for :products do |product| %>
-            <%= product.label :name %>
-            <%= product.text_field :name %>
-            <%= product.label :price %>
-            <%= product.number_field :price %>
-            <%= product.collection_select :product_category_id, ProductCategory.all, :id, :name %>
+    <%= f.nested_fields_for :store_purchases do |s| %>
+        <hr><hr>
+        <%= s.collection_select :store_id, Store.all, :id, :name %>
+        <%= s.nested_fields_for :products do |p| %>
+            <hr>
+            <%= p.label :name %>
+            <%= p.text_field :name %>
+            <%= p.label :price %>
+            <%= p.number_field :price %>
+            <%= p.collection_select :product_category_id, ProductCategory.all, :id, :name %>
             <br>
         <% end %>
-        <%= f.add_nested_fields_link :store_purchases, "Add Form", role: "button" %>
+        <%= s.add_nested_fields_link :products, "Add Form", role: "button" %>
     <% end %>
     <%= f.submit %>
-    <%= f.add_nested_fields_link :products, "Add Form", role: "button" %>
+    <%= f.add_nested_fields_link :store_purchases, "Add Form", role: "button" %>
 <% end %>
