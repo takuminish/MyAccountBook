@@ -3,6 +3,5 @@ class Product < ApplicationRecord
 
   validates :name, presence: true
   validates :price, presence: true
-  validates :purchase_date, presence: true
 
 end

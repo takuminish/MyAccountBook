@@ -13,7 +13,7 @@ class DatePurchasesController < ApplicationController
 
   def create
     @date_purchase = DatePurchase.new(date_purchase_params)
-    @date_purchase.total_cost_insert
+    @date_purchase.total_cost = 100
     if @date_purchase.save
 
     else
