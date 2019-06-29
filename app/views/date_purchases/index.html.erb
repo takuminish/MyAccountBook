@@ -1,6 +1,6 @@
 <h1>DatePurchases#index</h1>
 
-<%= @date_purchase.each do |d| %>
-<h1><%= d.date %></h1>
+<% @date_purchase.each do |d| %>
+    <%= link_to d.date, date_purchase_path(d) %><br>
 
 <% end %>
