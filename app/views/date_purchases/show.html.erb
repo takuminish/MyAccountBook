@@ -1,2 +1,9 @@
 <h1>DatePurchases#show</h1>
-<p>Find me in app/views/date_purchases/show.html.erb</p>
+
+<% @date_purchase.store_purchases.each do |s| %>
+    <%= s.store.name %>
+    <% s.products.each do |p| %>
+        <%= p.name %>
+    <% end %>
+    <hr>
+<% end %>
