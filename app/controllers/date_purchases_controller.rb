@@ -51,6 +51,6 @@ class DatePurchasesController < ApplicationController
 
   private def date_purchase_params_update
   
-    params.require(:date_purchase).permit(:date, store_purchases_attributes:[:store_id,products_attributes:[:name, :price, :product_category_id, :id, :_destroy], :id, :_destroy])
+    params.require(:date_purchase).permit(:date, store_purchases_attributes:[:id, :_destroy, :store_id,products_attributes:[:id, :_destroy, :name, :price, :product_category_id, ]])
   end
 end
