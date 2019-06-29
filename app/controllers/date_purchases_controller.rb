@@ -4,6 +4,7 @@ class DatePurchasesController < ApplicationController
   end
 
   def show
+    @date_purchase = DtePurchase.find(params[:id])
   end
 
   def new
