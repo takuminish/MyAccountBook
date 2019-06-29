@@ -1,10 +1,10 @@
 class DatePurchasesController < ApplicationController
   def index
-    @date_purchase = DatePurchase.all
+    @date_purchase = DatePurchase.includes(store_purchases: [:products]).all
   end
 
   def show
-    @date_purchase = DatePurchase.find(params[:id])
+    @date_purchase = DatePurchase.includes(store_purchases: [:products]).find(params[:id])
   end
 
   def new
@@ -24,12 +24,12 @@ class DatePurchasesController < ApplicationController
  
   end
   def edit
-    @date_purchase = DatePurchase.find(params[:id])
+    @date_purchase = DatePurchase.includes(store_purchases: [:products]).find(params[:id])
 
   end
 
   def update
-    @date_purchase = DatePurchase.find(params[:id])
+    @date_purchase = DatePurchase.includes(store_purchases: [:products]).find(params[:id])
     @date_purchase.update(date_purchase_params_update)
     @date_purchase.total_cost_insert
     if @date_purchase.save
