@@ -17,7 +17,7 @@ class ProductCategoriesController < ApplicationController
 
     else
       puts @product_category.errors.full_messages
-      render :edit
+      render :new
     end
 
   end
@@ -29,6 +29,13 @@ class ProductCategoriesController < ApplicationController
   def update
     @product_category = ProductCategory.find(params[:id])
     @product_category.update(product_category_params)
+    if @product_category.save
+      redirect_to product_categories_url
+
+    else
+      puts @product_category.errors.full_messages
+      render :edit
+    end
   end
 
   private def product_category_params
