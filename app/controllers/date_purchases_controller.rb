@@ -17,9 +17,11 @@ class DatePurchasesController < ApplicationController
     @date_purchase = DatePurchase.new(date_purchase_params)
     @date_purchase.total_cost_insert
     if @date_purchase.save
+      redirect_to date_purchases_url
 
     else
       puts @date_purchase.errors.full_messages
+      render :new
     end
  
   end
@@ -33,7 +35,7 @@ class DatePurchasesController < ApplicationController
     @date_purchase.update(date_purchase_params_update)
     @date_purchase.total_cost_insert
     if @date_purchase.save
-      redirect_back(fallback_location: stores_path)
+      redirect_to date_purchases_url
 
     else
       puts @date_purchase.errors.full_messages
