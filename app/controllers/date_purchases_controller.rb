@@ -1,10 +1,10 @@
 class DatePurchasesController < ApplicationController
   def index
-    @date_purchase = Datepurchase.all
+    @date_purchase = DatePurchase.all
   end
 
   def show
-    @date_purchase = DtePurchase.find(params[:id])
+    @date_purchase = DatePurchase.find(params[:id])
   end
 
   def new
