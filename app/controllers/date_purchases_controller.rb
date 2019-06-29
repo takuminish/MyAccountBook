@@ -1,5 +1,6 @@
 class DatePurchasesController < ApplicationController
   def index
+    @date_purchase = Datepurchase.all
   end
 
   def show
