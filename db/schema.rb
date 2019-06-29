@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_29_134131) do
+ActiveRecord::Schema.define(version: 2019_06_29_140326) do
 
   create_table "date_purchases", force: :cascade do |t|
     t.integer "total_cost", null: false
     t.date "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["date"], name: "index_date_purchases_on_date", unique: true
   end
 
   create_table "product_categories", force: :cascade do |t|
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_06_29_134131) do
     t.boolean "expense", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_product_categories_on_name", unique: true
   end
 
   create_table "products", force: :cascade do |t|
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_06_29_134131) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_stores_on_name", unique: true
   end
 
 end
