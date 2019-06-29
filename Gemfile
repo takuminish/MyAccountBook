@@ -66,3 +66,7 @@ gem 'nested_form_fields'
 
 #jQuery
 gem 'jquery-rails'
+
+#Rspec
+gem 'rspec-rails'
+gem 'factory_bot_rails'
