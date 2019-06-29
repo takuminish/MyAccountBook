@@ -31,7 +31,7 @@ class DatePurchasesController < ApplicationController
   def update
     @date_purchase = DatePurchase.find(params[:id])
     @date_purchase.update(date_purchase_params_update)
-    puts @date_purchase.store_purchase.build
+    @date_purchase.total_cost_insert
     if @date_purchase.save
       redirect_back(fallback_location: stores_path)
 
@@ -51,6 +51,6 @@ class DatePurchasesController < ApplicationController
 
   private def date_purchase_params_update
   
-    params.require(:date_purchase).permit(:date, products_attributes:[:name, :price, :store_id, :product_category_id, :_destroy, :id])
+    params.require(:date_purchase).permit(:date, store_purchases_attributes:[:store_id,products_attributes:[:name, :price, :product_category_id, :id, :_destroy], :id, :_destroy])
   end
 end
