@@ -14,7 +14,13 @@ class StoresController < ApplicationController
   def create
     
     @store= Store.new(store_params)
-    @store.save
+    if @store.save
+      redirect_to stores_url
+
+    else
+      puts @store.errors.full_messages
+      render :edit
+    end
 
   end
 
@@ -27,6 +33,13 @@ class StoresController < ApplicationController
   def update
     @store = Store.find(params[:id])
     @store.update(store_params)
+    if @store.save
+      redirect_to stores_url
+
+    else
+      puts @store.errors.full_messages
+      render :edit
+    end
   end
 
   private def store_params
