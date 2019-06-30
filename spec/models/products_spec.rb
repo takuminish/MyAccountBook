@@ -47,7 +47,18 @@ RSpec.describe Product, type: :model do
             @product.price = nil
 
             expect(@product).not_to be_valid
+
         end
 
+    end
+
+    describe 'store_category_idに関するバリデーション' do
+
+        it 'store_purchase_idが登録されていなければ登録失敗' do
+
+            @product.store_purchase_id = nil
+
+            expect(@product).not_to be_valid
+        end
     end
 end
