@@ -13,5 +13,25 @@ RSpec.describe Store, type: :model do
             expect(@store).to be_valid
 
         end
+    
+    end
+
+    describe 'nameに関するバリデーション' do
+    
+        it 'nameが登録されていなければ登録失敗' do
+
+            @store.name = nil
+
+            expect(@store).to be_valid
+
+        end
+
+        it 'nameが空白であれば登録失敗' do
+
+            @store.name = ""
+
+            expect(@store).to be_valid
+
+        end
     end
 end
