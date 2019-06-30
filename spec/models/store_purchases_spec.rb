@@ -31,4 +31,15 @@ RSpec.describe StorePurchase, type: :model do
         
     end
 
+    describe 'store_idに関するバリデーション' do
+
+        it 'store_idが登録されていなければ登録失敗' do
+
+            @store_purchase.store_id = nil
+            expect(@store_purchase).not_to be_valid
+
+        end
+        
+    end
+
 end
