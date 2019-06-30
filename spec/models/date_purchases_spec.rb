@@ -15,7 +15,19 @@ RSpec.describe DatePurchase, type: :model do
         expect(@date_purchase).to be_valid
 
         end
+
     end
 
+    describe 'total_costに関するバリデーション' do
 
+        it 'total_costが登録されていなければ登録失敗' do
+
+            @date_purchase.total_cost = nil
+
+            expect(@datepurchase).not_to be_valid
+
+        end
+
+    end
+    
 end
