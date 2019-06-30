@@ -16,4 +16,22 @@ RSpec.describe ProductCategory, type: :model do
 
     end
 
+    describe 'nameに関するバリデーション' do
+
+        it 'nameが設定されていなければ登録失敗' do
+
+            @product_category.name = nil
+            expect(@product_category).not_to be_valid
+
+        end
+
+        it 'nameが空白ならば登録失敗' do
+
+            @product_category.name = ""
+            expect(@product_category).not_to be_valid
+
+        end
+
+    end
+
 end
