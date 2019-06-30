@@ -30,4 +30,16 @@ RSpec.describe DatePurchase, type: :model do
 
     end
 
+    describe 'dateに関するバリデーション' do
+
+        it 'dateが登録されていなければ登録失敗' do
+
+            @date_purchase.date = nil
+
+            expect(@date_purchase).not_to be_valid
+
+        end
+
+    end
+
 end
