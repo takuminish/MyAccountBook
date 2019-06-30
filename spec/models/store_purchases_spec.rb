@@ -9,3 +9,14 @@ RSpec.describe StorePurchase, type: :model do
         @store_purchase = build(:store_purchase, date_purchase_id: date_purchase.id, store_id: store.id)
 
     end
+
+    describe '登録成功' do
+
+        it 'バリデーションを満たしていれば登録成功' do
+
+            expect(@store_purchase).to be_valid
+
+        end
+    end
+
+end
