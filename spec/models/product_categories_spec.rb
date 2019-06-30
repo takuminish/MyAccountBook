@@ -41,16 +41,16 @@ RSpec.describe ProductCategory, type: :model do
 
         end
 
-        describe 'expenseに関するバリデーション' do
+    end
+     describe 'expenseに関するバリデーション' do
 
-            it 'expenseが登録されていなければ登録失敗' do
+        it 'expenseが登録されていなければ登録失敗' do
             
-                
+            @product_category.expense = nil
 
-            end
+            expect(@product_category).not_to be_valid
 
         end
-
 
     end
 
