@@ -22,7 +22,7 @@ RSpec.describe Store, type: :model do
 
             @store.name = nil
 
-            expect(@store).to be_valid
+            expect(@store).not_to be_valid
 
         end
 
@@ -30,7 +30,7 @@ RSpec.describe Store, type: :model do
 
             @store.name = ""
 
-            expect(@store).to be_valid
+            expect(@store).not_to be_valid
 
         end
     end
