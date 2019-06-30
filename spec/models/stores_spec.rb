@@ -33,5 +33,15 @@ RSpec.describe Store, type: :model do
             expect(@store).not_to be_valid
 
         end
+
+        it 'nameが重複していれば登録失敗' do
+
+            store2 = create(:store)
+            @store.name = store2.name
+
+            expect(@store).not_to be_valid
+
+        end
+        
     end
 end
