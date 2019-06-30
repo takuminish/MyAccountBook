@@ -47,9 +47,6 @@ RSpec.describe DatePurchase, type: :model do
             date_purchase2 = create(:date_purchase)
             @date_purchase.date = date_purchase2.date
 
-            p date_purchase2.date
-            p @date_purchase.date
-
             expect(@date_purchase).not_to be_valid
 
         end
