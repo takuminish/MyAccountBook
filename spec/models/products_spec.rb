@@ -18,5 +18,14 @@ RSpec.describe Product, type: :model do
             expect(@product).to be_valid
             
         end
+
+        it 'nameが登録されていなければ登録失敗' do
+
+            product.name = nil
+
+            expect(@product).not_to be_valid
+
+        end
+
     end
 end
