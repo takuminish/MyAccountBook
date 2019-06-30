@@ -1,9 +1,6 @@
 FactoryBot.define do
     factory :product do
-        name {}
-        price {}
-        product_category_id {}
-        store_purchase_id {}
-        
+        name {Faker::App.name}
+        price {Faker::Number.number}
     end
 end
