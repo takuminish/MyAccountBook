@@ -4,7 +4,7 @@ RSpec.describe DatePurchase, type: :model do
 
     before do
 
-        @date_purchase = build(:product_category)
+        @date_purchase = build(:date_purchase)
     
     end
 
@@ -24,10 +24,10 @@ RSpec.describe DatePurchase, type: :model do
 
             @date_purchase.total_cost = nil
 
-            expect(@datepurchase).not_to be_valid
+            expect(@date_purchase).not_to be_valid
 
         end
 
     end
-    
+
 end
