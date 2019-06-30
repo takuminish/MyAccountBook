@@ -60,6 +60,13 @@ RSpec.describe Product, type: :model do
 
             expect(@product).not_to be_valid
         end
+
+        it 'store_purchase_idが存在しないものであれば登録失敗' do
+
+            @product.store_purchase_id = 12345
+
+            expect(@product).not_to be_valid
+        end
         
     end
 
@@ -68,6 +75,13 @@ RSpec.describe Product, type: :model do
         it 'product_category_idが登録されていなければ登録失敗' do
 
             @product.product_category_id = nil
+
+            expect(@product).not_to be_valid
+        end
+
+        it 'product_category_idが存在しないものであれば登録失敗' do
+
+            @product.product_category_id = 12345
 
             expect(@product).not_to be_valid
         end
