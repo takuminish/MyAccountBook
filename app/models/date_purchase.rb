@@ -3,7 +3,7 @@ class DatePurchase < ApplicationRecord
   accepts_nested_attributes_for :store_purchases, allow_destroy: true;
 
   validates :total_cost, presence: true
-  validates :date, presence: true
+  validates :date, presence: true, uniqueness: true
 
   def total_cost_insert
     total_cost = 0;
