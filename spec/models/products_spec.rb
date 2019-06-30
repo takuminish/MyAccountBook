@@ -12,12 +12,15 @@ RSpec.describe Product, type: :model do
         @product.product_category_id = product_category.id
     end
 
-    describe 'バリデーションチェック' do
+    describe '登録成功' do
         it '全ての値が設定されており、外部キーもおっけーであれば登録' do
 
             expect(@product).to be_valid
             
         end
+    end
+
+    describe 'nameに関するバリデーション' do
 
         it 'nameが登録されていなければ登録失敗' do
 
