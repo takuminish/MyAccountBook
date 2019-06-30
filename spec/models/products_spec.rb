@@ -61,4 +61,14 @@ RSpec.describe Product, type: :model do
             expect(@product).not_to be_valid
         end
     end
+
+    describe 'product_category_idに関するバリデーション' do
+
+        it 'product_category_idが登録されていなければ登録失敗' do
+
+            @product.product_category_id = nil
+
+            expect(@product).not_to be_valid
+        end
+    end
 end
