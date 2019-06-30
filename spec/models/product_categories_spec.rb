@@ -41,6 +41,17 @@ RSpec.describe ProductCategory, type: :model do
 
         end
 
+        describe 'expenseに関するバリデーション' do
+
+            it 'expenseが登録されていなければ登録失敗' do
+            
+                
+
+            end
+
+        end
+
+
     end
 
 end
