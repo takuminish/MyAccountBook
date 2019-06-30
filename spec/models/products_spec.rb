@@ -60,6 +60,7 @@ RSpec.describe Product, type: :model do
 
             expect(@product).not_to be_valid
         end
+        
     end
 
     describe 'product_category_idに関するバリデーション' do

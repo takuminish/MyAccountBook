@@ -28,6 +28,13 @@ RSpec.describe StorePurchase, type: :model do
             expect(@store_purchase).not_to be_valid
 
         end
+
+        it 'date_purchase_idが存在しないものであれば登録失敗' do
+
+            @store_purchase.date_purchase_id = 12345
+            expect(@store_purchase).not_to be_valid
+
+        end
         
     end
 
@@ -36,6 +43,13 @@ RSpec.describe StorePurchase, type: :model do
         it 'store_idが登録されていなければ登録失敗' do
 
             @store_purchase.store_id = nil
+            expect(@store_purchase).not_to be_valid
+
+        end
+
+        it 'store_idが存在しないものであれば登録失敗' do
+
+            @store_purchase.store_id = 12345
             expect(@store_purchase).not_to be_valid
 
         end
