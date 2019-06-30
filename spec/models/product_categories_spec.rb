@@ -32,6 +32,15 @@ RSpec.describe ProductCategory, type: :model do
 
         end
 
+        it 'nameが重複していれば登録失敗' do
+
+            product_category2 = create(:product_category)
+            @product_category.name = product_category2.name
+
+            expect(@product_category).not_to be_valid
+
+        end
+
     end
 
 end
