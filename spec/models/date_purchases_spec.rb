@@ -18,6 +18,8 @@ RSpec.describe DatePurchase, type: :model do
 
     end
 
+    end
+
     describe 'total_costに関するバリデーション' do
 
         it 'total_costが登録されていなければ登録失敗' do
