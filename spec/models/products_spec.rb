@@ -30,5 +30,24 @@ RSpec.describe Product, type: :model do
 
         end
 
+        it 'nameが空白だったら登録失敗' do
+        
+            @product.name = ""
+
+            expect(@product).not_to be_valid
+        
+        end
+
+    end
+
+    describe 'priceに関するバリデーション' do
+
+        it 'priceが登録されていなければ登録失敗' do
+
+            @product.price = nil
+
+            expect(@product).not_to be_valid
+        end
+
     end
 end
