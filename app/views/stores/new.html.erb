@@ -1,7 +1,8 @@
 <h1>Stores#new</h1>
 <%= form_for (@store) do |f| %>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-
-    <%= f.submit %>
+    <div class="form-group">
+        <%= f.label :name , "店の名前" %>
+        <%= f.text_field :name , class: "form-control" %>
+    </div>
+    <%= f.submit "追加", class: "btn btn-primary" %>
 <% end %>
