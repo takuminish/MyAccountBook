@@ -1,5 +1,5 @@
 class DatePurchase < ApplicationRecord
-  has_many :store_purchases
+  has_many :store_purchases, inverse_of: :date_purchase
   accepts_nested_attributes_for :store_purchases, allow_destroy: true;
 
   validates :total_cost, presence: true
