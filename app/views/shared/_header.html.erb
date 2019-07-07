@@ -8,15 +8,29 @@
     <li class="nav-item active">
       <a class="nav-link" href="#">DASHBOARD <span class="sr-only">(current)</span></a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">NewPurchase</a>
+    <li class="nav-item dropdown">
+        <%= link_to "Purchase", date_purchases_path, class: "nav-link dropdown-toggle" ,id: "purchaseMenu", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"%>
+        <div class="dropdown-menu" aria-labelledby="purchaseMenu">
+          <%= link_to "Show Purchase", date_purchases_path, class: "dropdown-item" %>
+          <%= link_to "New Purchase", date_purchases_new_path, class: "dropdown-item" %>
+        </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">NewStore</a>
+
+    <li class="nav-item dropdown">
+        <%= link_to "Store", stores_path, class: "nav-link dropdown-toggle" ,id: "storeMenu", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"%>
+        <div class="dropdown-menu" aria-labelledby="storeMenu">
+          <%= link_to "Show Purchase", stores_path, class: "dropdown-item" %>
+          <%= link_to "New Purchase", new_store_path, class: "dropdown-item" %>
+        </div>
     </li>
-    <li class="nav-item">
-    <a class="nav-link" href="#">NewCategory</a>
-  </li>
+
+    <li class="nav-item dropdown">
+        <%= link_to "Store", product_categories_path, class: "nav-link dropdown-toggle" ,id: "categoryMenu", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"%>
+        <div class="dropdown-menu" aria-labelledby="categoryMenu">
+        <%= link_to "Show Purchase", product_categories_path, class: "dropdown-item" %>
+        <%= link_to "New Purchase", new_product_category_path, class: "dropdown-item" %>
+        </div>
+    </li>
   </ul>
 </div>
 </nav>
