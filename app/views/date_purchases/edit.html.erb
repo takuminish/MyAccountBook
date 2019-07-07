@@ -1,25 +1,46 @@
 <h1>DatePurchases#edit</h1>
 
-<%= form_for(@date_purchase) do |f| %>
-    <%= f.label :date %><br>
-    <%= f.date_field :date %><br>
-    <%= f.nested_fields_for :store_purchases do |s| %>
-        <hr><hr>
-        <%= s.collection_select :store_id, Store.all, :id, :name %>
-        <%= s.nested_fields_for :products do |p| %>
-            <hr>
-            <%= p.label :name %>
-            <%= p.text_field :name %>
-            <%= p.label :price %>
-            <%= p.number_field :price %>
-            <%= p.collection_select :product_category_id, ProductCategory.all, :id, :name %>
-            <%= p.check_box :_destroy %>
-            <br>
+<div class="my-form">
+    <h3>家計簿フォーム</h3>
+    <%= form_for(@date_purchase) do |f| %>
+        <div class="form-group">
+            <%= f.label :date , "日時" %>
+            <%= f.date_field :date , class: "form-control" %>
+        </div>
+        <%= f.nested_fields_for :store_purchases do |s| %>
+            <div class="my-nest-form">
+                <h3>店ごとのフォーム</h3>
+                <div class="form-group">
+                    <%= s.label :store_id, "店のID" %>
+                    <%= s.collection_select :store_id, Store.all, :id, :name , {}, class: "form-control"%>
+                </div>
+                <%= s.nested_fields_for :products do |p| %>
+                    <div class="my-nest-form">
+                        <h3>商品ごとのフォーム</h3>
+                        <div class="form-group">
+                            <%= p.label :name , "商品名" %>
+                            <%= p.text_field :name , class: "form-control"%>
+                        </div>
+                        <div class="form-group">
+                            <%= p.label :price , "価格" %>
+                            <%= p.number_field :price , class: "form-control"%>
+                        </div class="form-group">
+                            <%= p.label :product_category_id, "カテゴリーの　ID" %>
+                            <%= p.collection_select :product_category_id, ProductCategory.all, :id, :name , {}, class: "form-control" %>
+                        <div>
+                        <br>
+                    </div>
+                <% end %>
+                <div class="form-group">
+                    <%= s.add_nested_fields_link :products, "商品の入力の追加", role: "button" , class: "btn btn-info" %>
+                </div>
+            </div>
         <% end %>
-        <%= s.add_nested_fields_link :products, "Add Form", role: "button" %>
-        <%= s.check_box :_destroy %>
+        <div class="form-group">
+            <%= f.add_nested_fields_link :store_purchases, "店ごとの入力の追加", role: "button" , class: "btn btn-info" %>
+        </div>
+        <div class="form-group">
+            <%= f.submit "変更", class: "btn btn-primary" %>
+        </div>
     <% end %>
-    <%= f.submit %>
-    <%= f.add_nested_fields_link :store_purchases, "Add Form", role: "button" %>
-<% end %>
-
+</div>
