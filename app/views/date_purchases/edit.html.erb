@@ -5,28 +5,28 @@
     <%= form_for(@date_purchase) do |f| %>
         <div class="form-group">
             <%= f.label :date , "日時" %>
-            <%= f.date_field :date , class: "form-control" %>
+            <%= f.date_field :date , class: "form-control" , required: true %>
         </div>
         <%= f.nested_fields_for :store_purchases do |s| %>
             <div class="my-nest-form">
                 <h3>店ごとのフォーム</h3>
                 <div class="form-group">
                     <%= s.label :store_id, "店のID" %>
-                    <%= s.collection_select :store_id, Store.all, :id, :name , {}, class: "form-control"%>
+                    <%= s.collection_select :store_id, Store.all, :id, :name , {}, class: "form-control", required: true %>
                 </div>
                 <%= s.nested_fields_for :products do |p| %>
                     <div class="my-nest-form">
                         <h3>商品ごとのフォーム</h3>
                         <div class="form-group">
                             <%= p.label :name , "商品名" %>
-                            <%= p.text_field :name , class: "form-control"%>
+                            <%= p.text_field :name , class: "form-control", required: true %>
                         </div>
                         <div class="form-group">
                             <%= p.label :price , "価格" %>
-                            <%= p.number_field :price , class: "form-control"%>
+                            <%= p.number_field :price , class: "form-control", required: true %>
                         </div class="form-group">
                             <%= p.label :product_category_id, "カテゴリーの　ID" %>
-                            <%= p.collection_select :product_category_id, ProductCategory.all, :id, :name , {}, class: "form-control" %>
+                            <%= p.collection_select :product_category_id, ProductCategory.all, :id, :name , {}, class: "form-control" , required: true %>
                         <div>
                         <br>
                     </div>
@@ -40,7 +40,7 @@
             <%= f.add_nested_fields_link :store_purchases, "店ごとの入力の追加", role: "button" , class: "btn btn-info" %>
         </div>
         <div class="form-group">
-            <%= f.submit "変更", class: "btn btn-primary" %>
+            <%= f.submit "登録", class: "btn btn-primary" %>
         </div>
     <% end %>
 </div>

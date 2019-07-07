@@ -4,14 +4,14 @@
     <%= form_for (@product_category) do |f| %>
         <div class="form-group">
           <%= f.label :name ,"カテゴリーの名前" %>
-          <%= f.text_field :name , class: "form-control" %>
+          <%= f.text_field :name , class: "form-control" , required: true %>
         </div>
         <div class="form-group">
            <%= f.label :expense , "収入or支出" %>
-           <%= f.select :expense, [["収入", false],["支出",true]], {},  class: "form-control"%>
+           <%= f.select :expense, [["収入", false],["支出",true]], {},  class: "form-control", required: true %>
         </div>
         <div class="form-group">
-            <%= f.submit "変更", class: "btn btn-primary" %>
+            <%= f.submit "追加", class: "btn btn-primary" %>
         </div>
     <% end %>
 </div>
