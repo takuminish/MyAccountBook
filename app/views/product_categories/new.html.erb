@@ -1,8 +1,16 @@
 <h1>ProductCategories#new</h1>
-<%= form_for (@product_category) do |f| %>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-    <label><%= f.select :expense, [["収入", false],["支出",true]] %>収入or支出</label>
-    <%= f.submit %>
-<% end %>
+
+<div class="my-form">
+    <%= form_for (@product_category) do |f| %>
+        <div class="form-group">
+          <%= f.label :name ,"カテゴリーの名前" %>
+          <%= f.text_field :name , class: "form-control" %>
+        </div>
+        <div class="form-group">
+           <%= f.label :expense , "収入or支出" %>
+           <%= f.select :expense, [["収入", false],["支出",true]], {},  class: "form-control"%>
+        </div>
+        <%= f.submit "追加", class: "btn btn-primary" %>
+    <% end %>
+</div>
 
