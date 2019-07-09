@@ -1,3 +1,16 @@
-<% @product_categories.each do |p| %>
-<h1><%= p.name %></h1>
-<% end %>
+<div class="show-table">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">カテゴリーの名前</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @product_categories.each do |p| %>
+            　  <tr>
+                    <td><%= link_to p.name, edit_store_path(p) %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
