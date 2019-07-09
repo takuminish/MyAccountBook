@@ -1,3 +1,16 @@
-<% @stores.each do |s| %>
-    <h1><%= s.name %></h1>
-<% end %>
+<div class="show-table">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">店の名前</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @stores.each do |s| %>
+        　  <tr>
+                <td><%= link_to s.name, edit_store_path(s) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>

@@ -14,3 +14,31 @@
     border-radius: 10px;
     margin-bottom: 20px;
 }
+
+table > tbody> tr> td  {
+    a {
+        display: block;       /* リンクをブロックレベル化して表示 */
+        padding: 0.6em 1em;   /* 内側の余白量を上下に0.6文字分＆左右に1文字分にする */
+        color: #444444;
+        text-decoration: none;
+    }
+
+    a:hover {
+        display: block;       /* リンクをブロックレベル化して表示 */
+        padding: 0.6em 1em;   /* 内側の余白量を上下に0.6文字分＆左右に1文字分にする */
+        color: #444444;
+        text-decoration: none;
+    }
+}
+
+td:hover {
+    background-color: #CCCCCC
+}
+
+.show-table {
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    border: solid 1px #BBBBBB;
+    padding: 10px;
+}
