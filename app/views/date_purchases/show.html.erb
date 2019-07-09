@@ -1,9 +1,24 @@
 <h1><%= @date_purchase.date %>の家計簿</h1>
 
 <% @date_purchase.store_purchases.each do |s| %>
-    <%= s.store.name %>
-    <% s.products.each do |p| %>
-        <%= p.name %>
-    <% end %>
-    <hr>
+    <div class="show-table">
+    <h3><%= s.store.name %></h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">商品名</th>
+                    <th scope="col">価格</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% s.products.each do |p| %>
+                    <tr>
+                        <td scope="col"><%= p.name %></td>
+                        <td scope="col"><%= p.price %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+    </table>
+   </div>
+   <h1><%= @date_purchase.total_cost %>円</h1>
 <% end %>
