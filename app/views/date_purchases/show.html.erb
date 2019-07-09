@@ -1,4 +1,4 @@
-<h1>DatePurchases#show</h1>
+<h1><%= @date_purchase.date %>の家計簿</h1>
 
 <% @date_purchase.store_purchases.each do |s| %>
     <%= s.store.name %>

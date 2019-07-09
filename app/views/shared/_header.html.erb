@@ -1,34 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<a class="navbar-brand" href="#">MyAccountBook</a>
+<a class="navbar-brand" href="#">私の家計簿</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
 </button>
 <div class="collapse navbar-collapse" id="navbarText">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-      <a class="nav-link" href="#">DASHBOARD <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="#">ダッシュボード<span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item dropdown">
-        <%= link_to "Purchase", date_purchases_path, class: "nav-link dropdown-toggle" ,id: "purchaseMenu", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"%>
+        <%= link_to "家計簿", date_purchases_path, class: "nav-link dropdown-toggle" ,id: "purchaseMenu", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"%>
         <div class="dropdown-menu" aria-labelledby="purchaseMenu">
-          <%= link_to "Show Purchase", date_purchases_path, class: "dropdown-item" %>
-          <%= link_to "New Purchase", date_purchases_new_path, class: "dropdown-item" %>
+          <%= link_to "家計簿一覧", date_purchases_path, class: "dropdown-item" %>
+          <%= link_to "家計簿新規作成", date_purchases_new_path, class: "dropdown-item" %>
         </div>
     </li>
 
     <li class="nav-item dropdown">
-        <%= link_to "Store", stores_path, class: "nav-link dropdown-toggle" ,id: "storeMenu", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"%>
+        <%= link_to "店", stores_path, class: "nav-link dropdown-toggle" ,id: "storeMenu", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"%>
         <div class="dropdown-menu" aria-labelledby="storeMenu">
-          <%= link_to "Show Purchase", stores_path, class: "dropdown-item" %>
-          <%= link_to "New Purchase", new_store_path, class: "dropdown-item" %>
+          <%= link_to "登録済み店一覧", stores_path, class: "dropdown-item" %>
+          <%= link_to "店新規登録", new_store_path, class: "dropdown-item" %>
         </div>
     </li>
 
     <li class="nav-item dropdown">
-        <%= link_to "ProductCategory", product_categories_path, class: "nav-link dropdown-toggle" ,id: "categoryMenu", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"%>
+        <%= link_to "カテゴリー", product_categories_path, class: "nav-link dropdown-toggle" ,id: "categoryMenu", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"%>
         <div class="dropdown-menu" aria-labelledby="categoryMenu">
-        <%= link_to "Show Purchase", product_categories_path, class: "dropdown-item" %>
-        <%= link_to "New Purchase", new_product_category_path, class: "dropdown-item" %>
+        <%= link_to "カテゴリー一覧", product_categories_path, class: "dropdown-item" %>
+        <%= link_to "カテゴリー新規登録", new_product_category_path, class: "dropdown-item" %>
         </div>
     </li>
   </ul>
