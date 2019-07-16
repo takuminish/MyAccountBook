@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'date_purchases/edit'
   get 'product_categories/new'
   get 'stores/new'
+  get '/' , to: 'dashboard#index'
 
   resources :product_categories
   resources :stores
