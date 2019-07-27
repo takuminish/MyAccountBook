@@ -1,6 +1,7 @@
 <h1>ダッシュボード</h1>
 
-<canvas id="expenseChart" width="400" height="400"></canvas>
+<canvas id="expenseBarChart" width="400" height="400"></canvas>
+<canvas id="expensePieChart" width="400" height="400"></canvas>
 <script>
 
 let weekPrices = [];
@@ -9,14 +10,47 @@ let date = gon.week;
 gon.date_purchase.forEach(d => {if (d == null) {weekPrices.push(0)} else {weekPrices.push(d.total_cost)}});
 
 
-let ctx = document.getElementById('expenseChart');
-let myChart = new Chart(ctx, {
+let barChartName = document.getElementById('expenseBarChart');
+let batChart = new Chart(barChartName, {
     type: 'bar',
     data: {
         labels: date,
         datasets: [{
             label: '1週間の支出金額',
             data: weekPrices,
+            backgroundColor: 
+                'rgba(255, 99, 132, 0.2)'
+            ,
+            borderColor: 
+                'rgba(255, 99, 132, 1)'
+            ,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+let productCategoryCost = []
+let productCategoryName = []
+
+gon.product.forEach(d => { productCategoryCost.push(d.total_cost); productCategoryName.push(d.name);});
+
+let pieChartName = document.getElementById('expensePieChart');
+let pieChart = new Chart(pieChartName, {
+    type: 'pie',
+    data: {
+        labels: productCategoryName,
+        datasets: [{
+            label: '1週間の支出種類',
+            data: productCategoryCost,
             backgroundColor: 
                 'rgba(255, 99, 132, 0.2)'
             ,
