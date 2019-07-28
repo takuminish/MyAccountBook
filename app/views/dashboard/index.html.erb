@@ -4,26 +4,62 @@
     <canvas id="expenseByWeekBarChart"></canvas>
 </div>
 
-<div class="dashboard-component" id="weekBar">
-    <canvas id="expenseBarChart"></canvas>
+<div class="dashboard-component" id="monthBar">
+    <canvas id="expenseByMonthBarChart"></canvas>
 </div>
+
+<div class="dashboard-component" id="yearBar">
+    <canvas id="expenseByYearBarChart"></canvas>
+</div>
+
+
 <canvas id="expensePieChart" width="400" height="400"></canvas>
 <script>
 
 weekPrices = [];
-date = gon.week;
+week = gon.week;
 
-gon.date_purchase.forEach(d => {if (d == null) {weekPrices.push(0)} else {weekPrices.push(d.total_cost)}});
+gon.week_date_purchase.forEach(d => {if (d == null) {weekPrices.push(0)} else {weekPrices.push(d.total_cost)}});
 
 
-barChartName = document.getElementById('expenseByWeekBarChart');
-batChart = new Chart(barChartName, {
+barChartNameByWeek = document.getElementById('expenseByWeekBarChart');
+batChartByWeek = new Chart(barChartNameByWeek, {
     type: 'bar',
     data: {
-        labels: date,
+        labels: week,
         datasets: [{
             label: '1週間の支出金額',
             data: weekPrices,
+            backgroundColor: 
+                'rgba(255, 99, 132, 0.2)'
+            ,
+            borderColor: 
+                'rgba(255, 99, 132, 1)'
+            ,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+year = gon.year;
+
+barChartNameByYear = document.getElementById('expenseByYearBarChart');
+barChartByYear = new Chart(barChartNameByYear, {
+    type: 'bar',
+    data: {
+        labels: year,
+        datasets: [{
+            label: '1年の支出金額',
+            data: gon.year_date_purchase,
             backgroundColor: 
                 'rgba(255, 99, 132, 0.2)'
             ,
