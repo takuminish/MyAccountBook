@@ -9,7 +9,7 @@
         <tbody>
             <% @product_categories.each do |p| %>
             　  <tr>
-                    <td><%= link_to p.name, edit_store_path(p) %></td>
+                    <td><%= link_to p.name, edit_product_category_path(p) %></td>
                 </tr>
             <% end %>
         </tbody>
