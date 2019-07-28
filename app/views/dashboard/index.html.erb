@@ -50,6 +50,36 @@ batChartByWeek = new Chart(barChartNameByWeek, {
     }
 });
 
+month = gon.month;
+
+barChartNameByMonth = document.getElementById('expenseByMonthBarChart');
+batChartByMonth = new Chart(barChartNameByMonth, {
+    type: 'bar',
+    data: {
+        labels: month,
+        datasets: [{
+            label: '1ヶ月の支出金額',
+            data: gon.month_date_purchase,
+            backgroundColor: 
+                'rgba(255, 99, 132, 0.2)'
+            ,
+            borderColor: 
+                'rgba(255, 99, 132, 1)'
+            ,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
 year = gon.year;
 
 barChartNameByYear = document.getElementById('expenseByYearBarChart');
