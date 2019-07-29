@@ -89,7 +89,13 @@ batChartByMonth = new Chart(barChartNameByMonth, {
     }
 });
 
-year = gon.year;
+yearPrices = [];
+year = [];
+
+gon.year_date_purchase.forEach(d => {
+    year.push(d[0]);
+    yearPrices.push(d[1]);
+});
 
 barChartNameByYear = document.getElementById('expenseByYearBarChart');
 barChartByYear = new Chart(barChartNameByYear, {
@@ -98,7 +104,7 @@ barChartByYear = new Chart(barChartNameByYear, {
         labels: year,
         datasets: [{
             label: '1年の支出金額',
-            data: gon.year_date_purchase,
+            data: yearPrices,
             backgroundColor: 
                 'rgba(255, 99, 132, 0.2)'
             ,

@@ -66,5 +66,17 @@ class DatePurchase < ApplicationRecord
     return month_date_purchases
 
   end
+
+  def self.cost_of_year(num)
+    year_date_purchases = []
+
+    12.times do |d| 
+      date = (Date.today.beginning_of_year + d.month).strftime("%Y-%m")
+      purchase  = DatePurchase.cost_month_by_year(d);
+      year_date_purchases << [date,purchase]
+    end
+
+  return year_date_purchases
+  end
   
 end
