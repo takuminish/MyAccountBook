@@ -78,5 +78,29 @@ class DatePurchase < ApplicationRecord
 
   return year_date_purchases
   end
+
+  def self.cost_of_product_category_year(num)
+    products = []
+    DatePurchase.cost_of_product_category_by_year(num).each do |p|
+       products << p.attributes
+   end
+   return products
+  end
+
+  def self.cost_of_product_category_month(num)
+    products = []
+    DatePurchase.cost_of_product_category_by_month(num).each do |p|
+       products << p.attributes
+   end
+   return products
+  end
+
+  def self.cost_of_product_category_week(num)
+    products = []
+    DatePurchase.cost_of_product_category_by_week(num).each do |p|
+       products << p.attributes
+   end
+   return products
+  end
   
 end

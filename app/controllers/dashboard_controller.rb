@@ -2,22 +2,12 @@ class DashboardController < ApplicationController
 
     def index
 
-        @product = []
-        @week_date_purchases = DatePurchase.cost_of_week(1)
-
-        @year_date_purchases = DatePurchase.cost_of_year(1)
-
-        @month_date_purchases = DatePurchase.cost_of_month(1)
-
-        DatePurchase.cost_of_product_category_by_year(0).each do |p|
-           @product << p.attributes
-        end
-
-        gon.week_date_purchase = @week_date_purchases
-        gon.year_date_purchase = @year_date_purchases
-        gon.month_date_purchase = @month_date_purchases
-
-        gon.product = @product
+        gon.week_date_purchase = DatePurchase.cost_of_week(1)
+        gon.year_date_purchase = DatePurchase.cost_of_year(1)
+        gon.month_date_purchase = DatePurchase.cost_of_month(1)
+        gon.product_category_by_week = DatePurchase.cost_of_product_category_week(0)
+        gon.product_category_by_month = DatePurchase.cost_of_product_category_month(0)
+        gon.product_category_by_year = DatePurchase.cost_of_product_category_year(0)
         
     end
 
