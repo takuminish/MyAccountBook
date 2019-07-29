@@ -17,9 +17,12 @@
 <script>
 
 weekPrices = [];
-week = gon.week;
+week = [];
 
-gon.week_date_purchase.forEach(d => {if (d == null) {weekPrices.push(0)} else {weekPrices.push(d.total_cost)}});
+gon.week_date_purchase.forEach(d => {
+    week.push(d[0]);
+    weekPrices.push(d[1]);
+});
 
 
 barChartNameByWeek = document.getElementById('expenseByWeekBarChart');
@@ -50,7 +53,13 @@ batChartByWeek = new Chart(barChartNameByWeek, {
     }
 });
 
-month = gon.month;
+monthPrices = [];
+month = [];
+
+gon.month_date_purchase.forEach(d => {
+    month.push(d[0]);
+    monthPrices.push(d[1]);
+});
 
 barChartNameByMonth = document.getElementById('expenseByMonthBarChart');
 batChartByMonth = new Chart(barChartNameByMonth, {
@@ -59,7 +68,7 @@ batChartByMonth = new Chart(barChartNameByMonth, {
         labels: month,
         datasets: [{
             label: '1ヶ月の支出金額',
-            data: gon.month_date_purchase,
+            data: monthPrices,
             backgroundColor: 
                 'rgba(255, 99, 132, 0.2)'
             ,
