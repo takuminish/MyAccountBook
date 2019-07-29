@@ -13,7 +13,9 @@
 </div>
 
 
-<canvas id="expensePieChart" width="400" height="400"></canvas>
+<canvas id="expenseByWeekPieChart"></canvas>
+<canvas id="expenseByMonthPieChart"></canvas>
+<canvas id="expenseByYearPieChart"></canvas>
 <script>
 
 weekPrices = [];
@@ -125,19 +127,95 @@ barChartByYear = new Chart(barChartNameByYear, {
     }
 });
 
-productCategoryCost = []
-productCategoryName = []
+productCategoryCostByWeek = []
+productCategoryCostByWeekName = []
 
-gon.product.forEach(d => { productCategoryCost.push(d.total_cost); productCategoryName.push(d.name);});
+gon.product_category_by_week.forEach(d => { productCategoryCostByWeek.push(d.total_cost); productCategoryCostByWeekName.push(d.name);});
 
-pieChartName = document.getElementById('expensePieChart');
-pieChart = new Chart(pieChartName, {
+pieChartNameByWeek = document.getElementById('expenseByWeekPieChart');
+pieChart = new Chart(pieChartNameByWeek, {
     type: 'pie',
     data: {
-        labels: productCategoryName,
+        labels: productCategoryCostByWeekName,
         datasets: [{
             label: '1週間の支出種類',
-            data: productCategoryCost,
+            data: productCategoryCostByWeek,
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [             
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+
+
+    }
+});
+
+productCategoryCostByMonth = []
+productCategoryCostByMonthName = []
+
+gon.product_category_by_month.forEach(d => { productCategoryCostByMonth.push(d.total_cost); productCategoryCostByMonthName.push(d.name);});
+
+pieChartNameByMonth = document.getElementById('expenseByMonthPieChart');
+pieChart = new Chart(pieChartNameByMonth, {
+    type: 'pie',
+    data: {
+        labels: productCategoryCostByMonthName,
+        datasets: [{
+            label: '1年の支出種類',
+            data: productCategoryCostByMonth,
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [             
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+
+
+    }
+});
+
+productCategoryCostByYear = []
+productCategoryCostByYearName = []
+
+gon.product_category_by_year.forEach(d => { productCategoryCostByYear.push(d.total_cost); productCategoryCostByYearName.push(d.name);});
+
+pieChartNameByYear = document.getElementById('expenseByYearPieChart');
+pieChart = new Chart(pieChartNameByYear, {
+    type: 'pie',
+    data: {
+        labels: productCategoryCostByYearName,
+        datasets: [{
+            label: '1年の支出種類',
+            data: productCategoryCostByYear,
             backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
