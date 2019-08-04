@@ -8,9 +8,9 @@ class DatePurchase < ApplicationRecord
 
   scope :cost_date_by_week, -> (num, next_date){where(date: num.week.ago.beginning_of_day + next_date.day)}
   scope :month_by_year, -> (next_month){where(date: (Date.today.beginning_of_year + next_month.month)..(Date.today.beginning_of_year.end_of_month+ next_month.month))}
-  scope :cost_month_by_year, -> (next_month){month_by_year(next_monthmonth).sum(:total_cost)}
-  scope :week_by_month, -> (next_week){where(date: (Date.today.beginning_of_month.beginning_of_week + next_week.week)..(Date.today.beginning_of_month.end_of_week + next_week.week))}
-  scope :cost_week_by_month, -> (week){week_by_month(week).sum(:total_cost)}
+  scope :cost_month_by_year, -> (num, next_month){month_by_year(next_month).sum(:total_cost)}
+  scope :week_by_month, -> (num, next_week){where(date: (Date.today.beginning_of_month.beginning_of_week + next_week.week)..(Date.today.beginning_of_month.end_of_week + next_week.week))}
+  scope :cost_week_by_month, -> (num, next_week){week_by_month(next_week).sum(:total_cost)}
   scope :join_products, ->{joins({:store_purchases => {:products => :product_category}})}
   scope :select_product_category_cost, -> {select("product_category_id, product_categories.name, sum(products.price) AS total_cost")}
   scope :group_by_product_category, -> {group("products.product_category_id")}
