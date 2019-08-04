@@ -51,13 +51,13 @@ class DatePurchase < ApplicationRecord
     month_date_purchases = []
 
     4.times do |d|
-      date = (Date.today.beginning_of_month.beginning_of_week + d.week).strftime("%m-%d week")
+      date = (num.month.beginning_of_month.beginning_of_week + d.week).strftime("%m-%d week")
       purchase = DatePurchase.cost_week_by_month(d)
 
       month_date_purchases << [date, purchase]
 
     end
-    if ((Date.today.beginning_of_month.beginning_of_week + 4.week) < Date.today.end_of_month)
+    if ((num.month.beginning_of_month.beginning_of_week + 4.week) < Date.today.end_of_month)
       date = (Date.today.beginning_of_month.beginning_of_week + 4.week).strftime("%m-%d week")
       purchase = DatePurchase.cost_week_by_month(5)
 
@@ -71,7 +71,7 @@ class DatePurchase < ApplicationRecord
     year_date_purchases = []
 
     12.times do |d| 
-      date = (Date.today.beginning_of_year + d.month).strftime("%Y-%m")
+      date = (num.year.ago.beginning_of_year + d.month).strftime("%Y-%m")
       purchase  = DatePurchase.cost_month_by_year(d);
       year_date_purchases << [date,purchase]
     end
