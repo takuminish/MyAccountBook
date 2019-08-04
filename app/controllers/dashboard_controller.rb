@@ -11,4 +11,16 @@ class DashboardController < ApplicationController
         
     end
 
+
+    def ajax_get_week_purchase_data
+
+    end
+
+    def ajax_get_month_purchase_data
+
+    end
+
+    def ajax_get_year_purchase_data
+
+    end
 end
