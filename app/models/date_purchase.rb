@@ -36,7 +36,7 @@ class DatePurchase < ApplicationRecord
   def self.cost_of_week(num)
     week_date_purchases = []
     7.times do |d| 
-      date = (num.week.ago.beginning_of_day + d.day).strftime("%Y-%m-%d")
+      date = (num.week.ago.beginning_of_week + d.day).strftime("%Y-%m-%d")
       purchase = 0
       DatePurchase.cost_date_by_week(num, d).each do |d|
         purchase = d[:total_cost]
