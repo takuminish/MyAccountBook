@@ -19,6 +19,8 @@ class DashboardController < ApplicationController
         gon.product_category_by_week = DatePurchase.cost_of_product_category_week(num)
         gon.next_num = next_num
 
+        render partial: "share/gon_partial"
+
     end
 
     def ajax_get_month_purchase_data
@@ -26,12 +28,16 @@ class DashboardController < ApplicationController
         gon.product_category_by_month = DatePurchase.cost_of_product_category_month(num)
         gon.next_num = next_num
 
+        render partial: "share/gon_partial"
+
     end
 
     def ajax_get_year_purchase_data
         gon.year_date_purchase = DatePurchase.cost_of_year(num)
         gon.product_category_by_year = DatePurchase.cost_of_product_category_year(num)
         gon.next_num = next_num
+
+        render partial: "share/gon_partial"
 
     end
 end
