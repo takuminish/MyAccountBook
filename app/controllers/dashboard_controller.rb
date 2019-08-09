@@ -20,6 +20,7 @@ class DashboardController < ApplicationController
         gon.next_num = next_num
 
         render partial: "share/gon_partial"
+        render nothing: true
 
     end
 
@@ -29,6 +30,7 @@ class DashboardController < ApplicationController
         gon.next_num = next_num
 
         render partial: "share/gon_partial"
+        render nothing: true
 
     end
 
@@ -38,6 +40,7 @@ class DashboardController < ApplicationController
         gon.next_num = next_num
 
         render partial: "share/gon_partial"
+        render nothing: true
 
     end
 end

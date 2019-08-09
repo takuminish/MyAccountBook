@@ -1,4 +1,6 @@
 <h1>ダッシュボード</h1>
+<button type="button" id="a">a</button>
+<button type="button" id="b">b</button>
 
 <div class="dashboard-group">
     <div class="dashboard-component" id="weekBar">
@@ -30,6 +32,10 @@
     </div>
 </div>
 <script>
+
+$("#a").on("click", function() {
+alert("1");
+});
 
 weekPrices = [];
 week = [];
