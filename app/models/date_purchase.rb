@@ -9,13 +9,13 @@ class DatePurchase < ApplicationRecord
   scope :cost_date_by_week, -> (num, next_date){where(date: num.week.ago.beginning_of_day + next_date.day)}
   scope :month_by_year, -> (num, next_month){where(date: (num.year.ago.beginning_of_year + next_month.month)..(num.year.ago.beginning_of_year.end_of_month+ next_month.month))}
   scope :cost_month_by_year, -> (num, next_month){month_by_year(num, next_month).sum(:total_cost)}
-  scope :week_by_month, -> (num, next_week){where(date: num.month.ago.beginning_of_month.beginning_of_week + next_week.week)..(num.month.ago.beginning_of_month.end_of_week + next_week.week))}
+  scope :week_by_month, -> (num, next_week){where(date: (num.month.ago.beginning_of_month.beginning_of_week + next_week.week)..(num.month.ago.beginning_of_month.end_of_week + next_week.week))}
   scope :cost_week_by_month, -> (num, next_week){week_by_month(num, next_week).sum(:total_cost)}
   scope :join_products, ->{joins({:store_purchases => {:products => :product_category}})}
   scope :select_product_category_cost, -> {select("product_category_id, product_categories.name, sum(products.price) AS total_cost")}
   scope :group_by_product_category, -> {group("products.product_category_id")}
-  scope :by_week, -> (num){where(date: num.week.ago.beginning_of_week..num.week.ago.end_of_week)}
-  scope :by_month, -> (num){where(date: num.month.ago.beginning_of_month..num.week.ago.end_of_month)}
+  scope :by_week, -> (num){where(date: num.week.ago.beginning_of_day..num.week.ago.end_of_week)}
+  scope :by_month, -> (num){where(date: num.month.ago.beginning_of_month.beginning_of_week..num.month.ago.end_of_month.end_of_week)}
   scope :by_year, -> (num){where(date: num.year.ago.beginning_of_year..num.week.ago.end_of_year)}
   scope :cost_of_product_category_by_week, -> (num){join_products.select_product_category_cost.group_by_product_category.by_week(num)}
   scope :cost_of_product_category_by_month, -> (num){join_products.select_product_category_cost.group_by_product_category.by_month(num)}
@@ -57,8 +57,8 @@ class DatePurchase < ApplicationRecord
       month_date_purchases << [date, purchase]
 
     end
-    if ((num.month.ago.beginning_of_month.beginning_of_week + 4.week) < Date.today.end_of_month)
-      date = (Date.today.beginning_of_month.beginning_of_week + 4.week).strftime("%m-%d week")
+    if ((num.month.ago.beginning_of_month.beginning_of_week + 4.week) < num.month.ago.end_of_month)
+      date = (num.month.ago.beginning_of_month.beginning_of_week + 4.week).strftime("%m-%d week")
       purchase = DatePurchase.cost_week_by_month(num, 5)
 
       month_date_purchases << [date, purchase]
