@@ -1,81 +1,27 @@
 $(document).on("ready turbolinks:load", function() {
         
-    $("#next_year").on("click", function() {
-        $.ajax({
-            url: "dashboard/ajax_get_year_purchase_data",
-            type: "GET",
-            data: {
-                'next_num': gon.next_num-1
-            }
-        }).done( (data) => {
-        $('head').append(data); 
-        yearAddData();
-        })
+    $("#next_year").on("click", () => {
+        getAjaxPurchaseData("dashboard/ajax_get_year_purchase_data", gon.next_num-1, yearAddData());
     });
     
-    $("#ago_year").on("click", function() {
-        $.ajax({
-            url: "dashboard/ajax_get_year_purchase_data",
-            type: "GET",
-            data: {
-                'next_num': gon.next_num+1
-            }
-        }).done( (data) => {
-        $('head').append(data); 
-        yearAddData();
-        })
+    $("#ago_year").on("click", () => {
+        getAjaxPurchaseData("dashboard/ajax_get_year_purchase_data", gon.next_num+1, yearAddData());
     });
     
-    $("#next_month").on("click", function() {
-        $.ajax({
-            url: "dashboard/ajax_get_month_purchase_data",
-            type: "GET",
-            data: {
-                'next_num': gon.next_num-1
-            }
-        }).done( (data) => {
-        $('head').append(data); 
-        monthAddData();
-        })
+    $("#next_month").on("click", () => {
+        getAjaxPurchaseData("dashboard/ajax_get_month_purchase_data", gon.next_num-1, monthAddData());
     });
     
-    $("#ago_month").on("click", function() {
-        $.ajax({
-            url: "dashboard/ajax_get_month_purchase_data",
-            type: "GET",
-            data: {
-                'next_num': gon.next_num+1
-            }
-        }).done( (data) => {
-        $('head').append(data); 
-        monthAddData();
-        })
+    $("#ago_month").on("click", () => {
+        getAjaxPurchaseData("dashboard/ajax_get_month_purchase_data", gon.next_num+1, monthAddData());
     });
     
-    $("#next_week").on("click", function() {
-        $.ajax({
-            url: "dashboard/ajax_get_week_purchase_data",
-            type: "GET",
-            data: {
-                'next_num': gon.next_num-1
-            }
-        }).done( (data) => {
-        $('head').append(data); 
-        weekAddData();
-        })
+    $("#next_week").on("click", () => {
+        getAjaxPurchaseData("dashboard/ajax_get_week_purchase_data", gon.next_num-1, weekAddData());
     });
     
-    $("#ago_week").on("click", function() {
-        $.ajax({
-            url: "dashboard/ajax_get_week_purchase_data",
-            type: "GET",
-            data: {
-                'next_num': gon.next_num+1
-            }
-        }).done( (data) => {
-        $('head').append(data); 
-        weekAddData();
-        })
+    $("#ago_week").on("click", () => {
+        getAjaxPurchaseData("dashboard/ajax_get_week_purchase_data", gon.next_num+1, weekAddData());
     });
     
     barChartNameByWeek = document.getElementById('expenseByWeekBarChart');
@@ -190,3 +136,16 @@ $(document).on("ready turbolinks:load", function() {
         return chart;
     }
 });
+
+function getAjaxPurchaseData(url, next_num, addGraphData) {
+    $.ajax({
+        url: url,
+        type: "GET",
+        data: {
+            'next_num': next_num
+        }
+    }).done( (data) => {
+    $('head').append(data); 
+    addGraphData();
+    })
+}
