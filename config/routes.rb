@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'product_categories/new'
   get 'stores/new'
   get '/' , to: 'dashboard#index'
+  get 'dashboard/ajax_get_year_purchase_data'
+  get 'dashboard/ajax_get_month_purchase_data'
+  get 'dashboard/ajax_get_week_purchase_data'
 
   resources :product_categories
   resources :stores

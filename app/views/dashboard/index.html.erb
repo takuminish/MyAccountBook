@@ -34,7 +34,15 @@
 <script>
 
 $("#a").on("click", function() {
-alert("1");
+  $.ajax({
+      url: "dashboard/ajax_get_week_purchase_data",
+      type: "GET",
+      data: {
+          'next_num': gon.next_num-1
+      }
+  }).done( (data) => {
+      console.log(data);
+  })
 });
 
 weekPrices = [];

@@ -14,33 +14,34 @@ class DashboardController < ApplicationController
 
 
     def ajax_get_week_purchase_data
-        next_num = params[:next_num]
-        gon.week_date_purchase = DatePurchase.cost_of_week(num)
-        gon.product_category_by_week = DatePurchase.cost_of_product_category_week(num)
+        next_num = params[:next_num].to_i
+        gon.week_date_purchase = DatePurchase.cost_of_week(next_num)
+        gon.product_category_by_week = DatePurchase.cost_of_product_category_week(next_num)
         gon.next_num = next_num
-
-        render partial: "share/gon_partial"
-        render nothing: true
+        render partial: "shared/gon_partial"
+     #   render nothing: true
 
     end
 
     def ajax_get_month_purchase_data
-        gon.month_date_purchase = DatePurchase.cost_of_month(num)
-        gon.product_category_by_month = DatePurchase.cost_of_product_category_month(num)
+        next_num = params[:next_num]
+        gon.month_date_purchase = DatePurchase.cost_of_month(next_num)
+        gon.product_category_by_month = DatePurchase.cost_of_product_category_month(next_num)
         gon.next_num = next_num
 
-        render partial: "share/gon_partial"
-        render nothing: true
+        render partial: "shared/gon_partial"
+        #render nothing: true
 
     end
 
     def ajax_get_year_purchase_data
-        gon.year_date_purchase = DatePurchase.cost_of_year(num)
-        gon.product_category_by_year = DatePurchase.cost_of_product_category_year(num)
+        next_num = params[:next_num]
+        gon.year_date_purchase = DatePurchase.cost_of_year(next_num)
+        gon.product_category_by_year = DatePurchase.cost_of_product_category_year(next_num)
         gon.next_num = next_num
 
-        render partial: "share/gon_partial"
-        render nothing: true
+        render partial: "shared/gon_partial"
+     #   render nothing: true
 
     end
 end
