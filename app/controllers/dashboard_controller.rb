@@ -24,7 +24,7 @@ class DashboardController < ApplicationController
     end
 
     def ajax_get_month_purchase_data
-        next_num = params[:next_num]
+        next_num = params[:next_num].to_i
         gon.month_date_purchase = DatePurchase.cost_of_month(next_num)
         gon.product_category_by_month = DatePurchase.cost_of_product_category_month(next_num)
         gon.next_num = next_num
@@ -35,7 +35,7 @@ class DashboardController < ApplicationController
     end
 
     def ajax_get_year_purchase_data
-        next_num = params[:next_num]
+        next_num = params[:next_num].to_i
         gon.year_date_purchase = DatePurchase.cost_of_year(next_num)
         gon.product_category_by_year = DatePurchase.cost_of_product_category_year(next_num)
         gon.next_num = next_num

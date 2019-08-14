@@ -35,14 +35,14 @@
 
 $("#a").on("click", function() {
   $.ajax({
-      url: "dashboard/ajax_get_week_purchase_data",
+      url: "dashboard/ajax_get_year_purchase_data",
       type: "GET",
       data: {
           'next_num': gon.next_num-1
       }
   }).done( (data) => {
     $('head').append(data); 
-    weekAddData();
+    yearAddData();
   })
 });
 
