@@ -1,6 +1,6 @@
 <h1>ダッシュボード</h1>
-<button type="button" id="a">a</button>
-<button type="button" id="b">b</button>
+<button type="button" id="ago_week">a</button>
+<button type="button" id="next_week">b</button>
 
 <div class="dashboard-group">
     <div class="dashboard-component" id="weekBar">
@@ -12,6 +12,9 @@
     </div>
 </div>
 
+<button type="button" id="ago_month">a</button>
+<button type="button" id="next_month">b</button>
+
 <div class="dashboard-group">
     <div class="dashboard-component" id="monthBar">
         <canvas id="expenseByMonthBarChart"></canvas>
@@ -21,6 +24,9 @@
         <canvas id="expenseByMonthPieChart"></canvas>
     </div>
 </div>
+
+<button type="button" id="ago_year">a</button>
+<button type="button" id="next_year">b</button>
 
 <div class="dashboard-group">
     <div class="dashboard-component" id="yearBar">
@@ -33,7 +39,7 @@
 </div>
 <script>
 
-$("#a").on("click", function() {
+$("#next_year").on("click", function() {
   $.ajax({
       url: "dashboard/ajax_get_year_purchase_data",
       type: "GET",
@@ -46,7 +52,7 @@ $("#a").on("click", function() {
   })
 });
 
-$("#b").on("click", function() {
+$("#ago_year").on("click", function() {
   $.ajax({
       url: "dashboard/ajax_get_year_purchase_data",
       type: "GET",
@@ -59,13 +65,65 @@ $("#b").on("click", function() {
   })
 });
 
+$("#next_month").on("click", function() {
+  $.ajax({
+      url: "dashboard/ajax_get_month_purchase_data",
+      type: "GET",
+      data: {
+          'next_num': gon.next_num-1
+      }
+  }).done( (data) => {
+    $('head').append(data); 
+    monthAddData();
+  })
+});
+
+$("#ago_month").on("click", function() {
+  $.ajax({
+      url: "dashboard/ajax_get_month_purchase_data",
+      type: "GET",
+      data: {
+          'next_num': gon.next_num+1
+      }
+  }).done( (data) => {
+    $('head').append(data); 
+    monthAddData();
+  })
+});
+
+$("#next_week").on("click", function() {
+  $.ajax({
+      url: "dashboard/ajax_get_week_purchase_data",
+      type: "GET",
+      data: {
+          'next_num': gon.next_num-1
+      }
+  }).done( (data) => {
+    $('head').append(data); 
+    weekAddData();
+  })
+});
+
+$("#ago_week").on("click", function() {
+  $.ajax({
+      url: "dashboard/ajax_get_week_purchase_data",
+      type: "GET",
+      data: {
+          'next_num': gon.next_num+1
+      }
+  }).done( (data) => {
+    $('head').append(data); 
+    weekAddData();
+  })
+});
+
 barChartNameByWeek = document.getElementById('expenseByWeekBarChart');
 barChartByWeek = new Chart(barChartNameByWeek, {
     type: 'bar',
     data: {
         labels: gon.week_date_purchase.map(x => x[0]),
         datasets: [{
-            label: '1週間の支出金額',
+            label: '1日の支出金額',
             data: gon.week_date_purchase.map(x => x[1]),
             backgroundColor: 
                 'rgba(255, 99, 132, 0.2)'
@@ -88,12 +146,12 @@ barChartByWeek = new Chart(barChartNameByWeek, {
 });
 
 barChartNameByMonth = document.getElementById('expenseByMonthBarChart');
-batChartByMonth = new Chart(barChartNameByMonth, {
+barChartByMonth = new Chart(barChartNameByMonth, {
     type: 'bar',
     data: {
         labels: gon.month_date_purchase.map(x => x[0]),
         datasets: [{
-            label: '1ヶ月の支出金額',
+            label: '1週間の支出金額',
             data: gon.month_date_purchase.map(x => x[1]),
             backgroundColor: 
                 'rgba(255, 99, 132, 0.2)'
@@ -121,7 +179,7 @@ barChartByYear = new Chart(barChartNameByYear, {
     data: {
         labels: gon.year_date_purchase.map(x => x[0]),
         datasets: [{
-            label: '1年の支出金額',
+            label: '1ヶ月の支出金額',
             data: gon.year_date_purchase.map(x => x[1]),
             backgroundColor: 
                 'rgba(255, 99, 132, 0.2)'
@@ -257,7 +315,7 @@ function monthAddData() {
     pieChartByMonth.data.labels = gon.product_category_by_month.map(x => x.name);
     pieChartByMonth.data.datasets[0].data = gon.product_category_by_month.map(x => x.total_cost);
     barChartByMonth.update();
-    pieChartByWMonth.update();
+    pieChartByMonth.update();
 }
 
 function yearAddData() {
