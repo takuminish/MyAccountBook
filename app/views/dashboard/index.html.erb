@@ -46,6 +46,19 @@ $("#a").on("click", function() {
   })
 });
 
+$("#b").on("click", function() {
+  $.ajax({
+      url: "dashboard/ajax_get_year_purchase_data",
+      type: "GET",
+      data: {
+          'next_num': gon.next_num+1
+      }
+  }).done( (data) => {
+    $('head').append(data); 
+    yearAddData();
+  })
+});
+
 barChartNameByWeek = document.getElementById('expenseByWeekBarChart');
 barChartByWeek = new Chart(barChartNameByWeek, {
     type: 'bar',

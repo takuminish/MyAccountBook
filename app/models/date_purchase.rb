@@ -16,7 +16,7 @@ class DatePurchase < ApplicationRecord
   scope :group_by_product_category, -> {group("products.product_category_id")}
   scope :by_week, -> (num){where(date: num.week.ago.beginning_of_day..num.week.ago.end_of_week)}
   scope :by_month, -> (num){where(date: num.month.ago.beginning_of_month.beginning_of_week..num.month.ago.end_of_month.end_of_week)}
-  scope :by_year, -> (num){where(date: num.year.ago.beginning_of_year..num.week.ago.end_of_year)}
+  scope :by_year, -> (num){where(date: num.year.ago.beginning_of_year..num.year.ago.end_of_year)}
   scope :cost_of_product_category_by_week, -> (num){join_products.select_product_category_cost.group_by_product_category.by_week(num)}
   scope :cost_of_product_category_by_month, -> (num){join_products.select_product_category_cost.group_by_product_category.by_month(num)}
   scope :cost_of_product_category_by_year, -> (num){join_products.select_product_category_cost.group_by_product_category.by_year(num)}
