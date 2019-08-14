@@ -42,26 +42,18 @@ $("#a").on("click", function() {
       }
   }).done( (data) => {
     $('head').append(data); 
+    weekAddData();
   })
 });
 
-weekPrices = [];
-week = [];
-
-gon.week_date_purchase.forEach(d => {
-    week.push(d[0]);
-    weekPrices.push(d[1]);
-});
-
-
 barChartNameByWeek = document.getElementById('expenseByWeekBarChart');
-batChartByWeek = new Chart(barChartNameByWeek, {
+barChartByWeek = new Chart(barChartNameByWeek, {
     type: 'bar',
     data: {
-        labels: week,
+        labels: gon.week_date_purchase.map(x => x[0]),
         datasets: [{
             label: '1週間の支出金額',
-            data: weekPrices,
+            data: gon.week_date_purchase.map(x => x[1]),
             backgroundColor: 
                 'rgba(255, 99, 132, 0.2)'
             ,
@@ -80,24 +72,16 @@ batChartByWeek = new Chart(barChartNameByWeek, {
             }]
         }
     }
-});
-
-monthPrices = [];
-month = [];
-
-gon.month_date_purchase.forEach(d => {
-    month.push(d[0]);
-    monthPrices.push(d[1]);
 });
 
 barChartNameByMonth = document.getElementById('expenseByMonthBarChart');
 batChartByMonth = new Chart(barChartNameByMonth, {
     type: 'bar',
     data: {
-        labels: month,
+        labels: gon.month_date_purchase.map(x => x[0]),
         datasets: [{
             label: '1ヶ月の支出金額',
-            data: monthPrices,
+            data: gon.month_date_purchase.map(x => x[1]),
             backgroundColor: 
                 'rgba(255, 99, 132, 0.2)'
             ,
@@ -116,24 +100,16 @@ batChartByMonth = new Chart(barChartNameByMonth, {
             }]
         }
     }
-});
-
-yearPrices = [];
-year = [];
-
-gon.year_date_purchase.forEach(d => {
-    year.push(d[0]);
-    yearPrices.push(d[1]);
 });
 
 barChartNameByYear = document.getElementById('expenseByYearBarChart');
 barChartByYear = new Chart(barChartNameByYear, {
     type: 'bar',
     data: {
-        labels: year,
+        labels: gon.year_date_purchase.map(x => x[0]),
         datasets: [{
             label: '1年の支出金額',
-            data: yearPrices,
+            data: gon.year_date_purchase.map(x => x[1]),
             backgroundColor: 
                 'rgba(255, 99, 132, 0.2)'
             ,
@@ -154,19 +130,14 @@ barChartByYear = new Chart(barChartNameByYear, {
     }
 });
 
-productCategoryCostByWeek = []
-productCategoryCostByWeekName = []
-
-gon.product_category_by_week.forEach(d => { productCategoryCostByWeek.push(d.total_cost); productCategoryCostByWeekName.push(d.name);});
-
 pieChartNameByWeek = document.getElementById('expenseByWeekPieChart');
-pieChart = new Chart(pieChartNameByWeek, {
+pieChartByWeek = new Chart(pieChartNameByWeek, {
     type: 'pie',
     data: {
-        labels: productCategoryCostByWeekName,
+        labels: gon.product_category_by_week.map(x => x.name),
         datasets: [{
             label: '1週間の支出種類',
-            data: productCategoryCostByWeek,
+            data: gon.product_category_by_week.map(x => x.total_cost),
             backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -191,20 +162,15 @@ pieChart = new Chart(pieChartNameByWeek, {
 
     }
 });
-
-productCategoryCostByMonth = []
-productCategoryCostByMonthName = []
-
-gon.product_category_by_month.forEach(d => { productCategoryCostByMonth.push(d.total_cost); productCategoryCostByMonthName.push(d.name);});
 
 pieChartNameByMonth = document.getElementById('expenseByMonthPieChart');
-pieChart = new Chart(pieChartNameByMonth, {
+pieChartByMonth = new Chart(pieChartNameByMonth, {
     type: 'pie',
     data: {
-        labels: productCategoryCostByMonthName,
+        labels: gon.product_category_by_month.map(x => x.name),
         datasets: [{
             label: '1年の支出種類',
-            data: productCategoryCostByMonth,
+            data: gon.product_category_by_month.map(x => x.total_cost),
             backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -229,20 +195,15 @@ pieChart = new Chart(pieChartNameByMonth, {
 
     }
 });
-
-productCategoryCostByYear = []
-productCategoryCostByYearName = []
-
-gon.product_category_by_year.forEach(d => { productCategoryCostByYear.push(d.total_cost); productCategoryCostByYearName.push(d.name);});
 
 pieChartNameByYear = document.getElementById('expenseByYearPieChart');
-pieChart = new Chart(pieChartNameByYear, {
+pieChartByYear = new Chart(pieChartNameByYear, {
     type: 'pie',
     data: {
-        labels: productCategoryCostByYearName,
+        labels: gon.product_category_by_year.map(x => x.name),
         datasets: [{
             label: '1年の支出種類',
-            data: productCategoryCostByYear,
+            data: gon.product_category_by_year.map(x => x.total_cost),
             backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -267,4 +228,31 @@ pieChart = new Chart(pieChartNameByYear, {
 
     }
 });
+
+function weekAddData() {
+    barChartByWeek.data.labels = gon.week_date_purchase.map(x => x[0]);
+    barChartByWeek.data.datasets[0].data = gon.week_date_purchase.map(x => x[1]);
+    pieChartByWeek.data.labels = gon.product_category_by_week.map(x => x.name);
+    pieChartByWeek.data.datasets[0].data = gon.product_category_by_week.map(x => x.total_cost);
+    barChartByWeek.update();
+    pieChartByWeek.update();
+}
+
+function monthAddData() {
+    barChartByMonth.data.labels = gon.month_date_purchase.map(x => x[0]);
+    barChartByMonth.data.datasets[0].data = gon.month_date_purchase.map(x => x[1]);
+    pieChartByMonth.data.labels = gon.product_category_by_month.map(x => x.name);
+    pieChartByMonth.data.datasets[0].data = gon.product_category_by_month.map(x => x.total_cost);
+    barChartByMonth.update();
+    pieChartByWMonth.update();
+}
+
+function yearAddData() {
+    barChartByYear.data.labels = gon.year_date_purchase.map(x => x[0]);
+    barChartByYear.data.datasets[0].data = gon.year_date_purchase.map(x => x[1]);
+    pieChartByYear.data.labels = gon.product_category_by_year.map(x => x.name);
+    pieChartByYear.data.datasets[0].data = gon.product_category_by_year.map(x => x.total_cost);
+    barChartByYear.update();
+    pieChartByYear.update();
+}
 </script>
