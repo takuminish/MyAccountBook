@@ -41,7 +41,7 @@ $("#a").on("click", function() {
           'next_num': gon.next_num-1
       }
   }).done( (data) => {
-      console.log(data);
+    $('head').append(data); 
   })
 });
 
