@@ -118,187 +118,23 @@ $("#ago_week").on("click", function() {
 });
 
 barChartNameByWeek = document.getElementById('expenseByWeekBarChart');
-barChartByWeek = new Chart(barChartNameByWeek, {
-    type: 'bar',
-    data: {
-        labels: gon.week_date_purchase.map(x => x[0]),
-        datasets: [{
-            label: '1日の支出金額',
-            data: gon.week_date_purchase.map(x => x[1]),
-            backgroundColor: 
-                'rgba(255, 99, 132, 0.2)'
-            ,
-            borderColor: 
-                'rgba(255, 99, 132, 1)'
-            ,
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+barChartByWeek = createBarChart(barChartNameByWeek, '1日の支出金額', gon.week_date_purchase.map(x => x[0]), gon.week_date_purchase.map(x => x[1]));
 
 barChartNameByMonth = document.getElementById('expenseByMonthBarChart');
-barChartByMonth = new Chart(barChartNameByMonth, {
-    type: 'bar',
-    data: {
-        labels: gon.month_date_purchase.map(x => x[0]),
-        datasets: [{
-            label: '1週間の支出金額',
-            data: gon.month_date_purchase.map(x => x[1]),
-            backgroundColor: 
-                'rgba(255, 99, 132, 0.2)'
-            ,
-            borderColor: 
-                'rgba(255, 99, 132, 1)'
-            ,
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+barChartByMonth = createBarChart(barChartNameByMonth, '1週間の支出金額', gon.month_date_purchase.map(x => x[0]), gon.month_date_purchase.map(x => x[1]));
 
 barChartNameByYear = document.getElementById('expenseByYearBarChart');
-barChartByYear = new Chart(barChartNameByYear, {
-    type: 'bar',
-    data: {
-        labels: gon.year_date_purchase.map(x => x[0]),
-        datasets: [{
-            label: '1ヶ月の支出金額',
-            data: gon.year_date_purchase.map(x => x[1]),
-            backgroundColor: 
-                'rgba(255, 99, 132, 0.2)'
-            ,
-            borderColor: 
-                'rgba(255, 99, 132, 1)'
-            ,
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+barChartByYear = createBarChart(barChartNameByYear, '1ヶ月の支出金額', gon.year_date_purchase.map(x => x[0]), gon.year_date_purchase.map(x => x[1]));
+
 
 pieChartNameByWeek = document.getElementById('expenseByWeekPieChart');
-pieChartByWeek = new Chart(pieChartNameByWeek, {
-    type: 'pie',
-    data: {
-        labels: gon.product_category_by_week.map(x => x.name),
-        datasets: [{
-            label: '1週間の支出種類',
-            data: gon.product_category_by_week.map(x => x.total_cost),
-            backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [             
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-
-
-    }
-});
+pieChartByWeek = createPieChart(pieChartNameByWeek, '1週間の支出種類', gon.product_category_by_week.map(x => x.name), gon.product_category_by_week.map(x => x.total_cost));
 
 pieChartNameByMonth = document.getElementById('expenseByMonthPieChart');
-pieChartByMonth = new Chart(pieChartNameByMonth, {
-    type: 'pie',
-    data: {
-        labels: gon.product_category_by_month.map(x => x.name),
-        datasets: [{
-            label: '1年の支出種類',
-            data: gon.product_category_by_month.map(x => x.total_cost),
-            backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [             
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-
-
-    }
-});
+pieChartByMonth = createPieChart(pieChartNameByMonth, '1ヶ月の支出種類', gon.product_category_by_month.map(x => x.name), gon.product_category_by_month.map(x => x.total_cost));
 
 pieChartNameByYear = document.getElementById('expenseByYearPieChart');
-pieChartByYear = new Chart(pieChartNameByYear, {
-    type: 'pie',
-    data: {
-        labels: gon.product_category_by_year.map(x => x.name),
-        datasets: [{
-            label: '1年の支出種類',
-            data: gon.product_category_by_year.map(x => x.total_cost),
-            backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [             
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-
-
-    }
-});
+pieChartByYear = createPieChart(pieChartNameByYear, '1年の支出種類', gon.product_category_by_year.map(x => x.name), gon.product_category_by_year.map(x => x.total_cost));
 
 function weekAddData() {
     barChartByWeek.data.labels = gon.week_date_purchase.map(x => x[0]);
@@ -325,5 +161,71 @@ function yearAddData() {
     pieChartByYear.data.datasets[0].data = gon.product_category_by_year.map(x => x.total_cost);
     barChartByYear.update();
     pieChartByYear.update();
+}
+
+function createBarChart(chartId, chartLabel, chartDataLabel, chartData) {
+    chart = new Chart(chartId, {
+        type: 'bar',
+        data: {
+            labels: chartDataLabel,
+            datasets: [{
+                label: chartLabel,
+                data: chartData,
+                backgroundColor: 
+                    'rgba(255, 99, 132, 0.2)'
+                ,
+                borderColor: 
+                    'rgba(255, 99, 132, 1)'
+                ,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    return chart;
+}
+
+function createPieChart(chartId, chartLabel, chartDataLabel, chartData) {
+    chart = new Chart(chartId, {
+    type: 'pie',
+    data: {
+        labels: chartDataLabel,
+        datasets: [{
+            label: chartLabel,
+            data: chartData,
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [             
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+
+
+    }
+});
+    return chart;
 }
 </script>
